@@ -67,6 +67,7 @@ var gOpts struct {
 	sortby           sortMethod
 	smartcase        bool
 	smartdia         bool
+	smartpaste       bool
 	waitmsg          string
 	watch            bool
 	wrapscan         bool
@@ -224,6 +225,7 @@ func init() {
 	gOpts.sortby = naturalSort
 	gOpts.smartcase = true
 	gOpts.smartdia = false
+	gOpts.smartpaste = false
 	gOpts.waitmsg = "Press any key to continue"
 	gOpts.watch = false
 	gOpts.wrapscan = true
