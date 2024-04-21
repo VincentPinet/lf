@@ -36,6 +36,9 @@ func run() {
 	if gOpts.mouse {
 		screen.EnableMouse()
 	}
+	if gOpts.smartpaste {
+		screen.EnablePaste()
+	}
 
 	if gLogPath != "" {
 		f, err := os.OpenFile(gLogPath, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0o600)

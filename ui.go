@@ -1454,6 +1454,15 @@ func (ui *ui) readNormalEvent(ev tcell.Event, nav *nav) expr {
 		if tev.Buttons() == tcell.Button1 {
 			return &callExpr{"cd", []string{dir.path}, 1}
 		}
+	case *tcell.EventPaste:
+		if tev.Start() && ui.cmdPrefix == "" {
+			for {
+				nextev := <-ui.evChan
+				if evp, ok := nextev.(*tcell.EventPaste); ok && evp.End() {
+					return &callExpr{"paste", nil, 1}
+				}
+			}
+		}
 	case *tcell.EventResize:
 		return &callExpr{"redraw", nil, 1}
 	case *tcell.EventError:
