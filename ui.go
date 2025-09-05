@@ -1595,7 +1595,16 @@ func (ui *ui) readNormalEvent(ev tcell.Event, nav *nav) expr {
 		}
 	case *tcell.EventPaste:
 		if tev.Start() {
-			ui.pasteEvent = true
+			if ui.cmdPrefix == "" && gOpts.smartpaste {
+				for {
+					nextev := <-ui.evChan
+					if evp, ok := nextev.(*tcell.EventPaste); ok && evp.End() {
+						return &callExpr{"paste", nil, 1}
+					}
+				}
+			} else {
+				ui.pasteEvent = true
+			}
 		} else if tev.End() {
 			ui.pasteEvent = false
 		}

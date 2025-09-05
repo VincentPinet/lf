@@ -102,6 +102,7 @@ var gOpts struct {
 	sizeunits        string
 	smartcase        bool
 	smartdia         bool
+	smartpaste       bool
 	sortby           sortMethod
 	statfmt          string
 	tabstop          int
@@ -262,6 +263,7 @@ func init() {
 	gOpts.sizeunits = "binary"
 	gOpts.smartcase = true
 	gOpts.smartdia = false
+	gOpts.smartpaste = true // TODO: false
 	gOpts.sortby = naturalSort
 	gOpts.statfmt = "\033[36m%p\033[0m| %c| %u| %g| %S| %t| -> %l"
 	gOpts.tabstop = 8

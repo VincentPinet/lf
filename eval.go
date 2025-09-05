@@ -178,6 +178,8 @@ func (e *setExpr) eval(app *app, args []string) {
 			app.ui.sort()
 			app.ui.loadFile(app, true)
 		}
+	case "smartpaste", "nosmartpaste", "smartpaste!":
+		err = applyBoolOpt(&gOpts.smartpaste, e)
 	case "watch", "nowatch", "watch!":
 		err = applyBoolOpt(&gOpts.watch, e)
 		if err == nil {

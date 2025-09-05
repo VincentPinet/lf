@@ -194,6 +194,7 @@ The following options can be used to customize the behavior of lf:
     sizeunits         string    (default 'binary')
     smartcase         bool      (default true)
     smartdia          bool      (default false)
+    smartpaste        bool      (default false)
     sortby            string    (default 'natural')
     statfmt           string    (default "\033[36m%p\033[0m| %c| %u| %g| %S| %t| -> %l")
     tabstop           int       (default 8)
@@ -1097,6 +1098,12 @@ smartdia (bool) (default false)
 
 Override ignoredia option when the pattern contains a character with
 diacritic. This option has no effect when ignoredia is disabled.
+
+smartpaste (bool) (default false)
+
+When receiving a bracketed-paste start control sequence from the terminal,
+will interpet this as a request to do :paste command and
+ignore actual pasted input until the end control sequence
 
 sortby (string) (default natural)
 
